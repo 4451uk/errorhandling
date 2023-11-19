@@ -1,43 +1,26 @@
-# ConditionalFunctions Solidity Contract
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-## Overview
+contract ConditionalFunctions {
+    uint public totalValue;
 
-This Solidity smart contract, named ConditionalFunctions, demonstrates the usage of conditional statements in Ethereum smart contract development. The contract contains three functions, each utilizing a different type of conditional statement: require, revert, and assert.
+    // Function using require statement
+    function requireFunction(uint number) public {
+        require(number > 25, "Value must be greater than 25");
+        totalValue += number;
+    }
 
-## Smart Contract Details
+    // Function using revert statement
+    function revertFunction(uint num1, uint num2) public {
+        if (num1 > num2) {
+            revert("Number 1 cannot be greater than number 2 ");
+        }
+        totalValue = num1 + num2;
+    }
 
-### requireFunction(uint number)
-
-This function uses the require statement to enforce a condition. It takes a parameter number and requires that it is greater than 25. If the condition is not met, the function execution is reverted with an error message. Otherwise, the value of number is added to the totalValue state variable.
-
-### revertFunction(uint num1, uint num2)
-
-The revertFunction checks if num1 is greater than num2. If this condition is true, the function execution is reverted with an error message stating that "Number 1 cannot be greater than number 2." Otherwise, the sum of num1 and num2 is assigned to the totalValue state variable.
-
-### assertFunction(uint _value)
-
-The assertFunction utilizes the assert statement to ensure that _value is greater than 10. If this condition is not satisfied, the function execution is reverted. Otherwise, the value of _value is assigned to the totalValue state variable.
-
-## License
-
-This smart contract is released under the MIT License. See the provided SPDX-License-Identifier comment in the code for more details.
-
-## Prerequisites
-
-- Solidity Compiler 0.8.0 or compatible version
-
-## Usage
-
-1. Deploy the contract into the local environment on remix
-2. Interact with the contract by calling the requireFunction, revertFunction, and assertFunction functions, providing the required parameters.
-
-
-## Contributors
-
-Umesh khushappanor
-
-Umeshbkkhushappanor@gmail.com
-
-Feel free to contribute to the project by forking the repository and submitting pull requests.
-
-Happy coding!
+    // Function using assert statement
+    function assertFunction(uint _value) public {
+        assert(_value >10);
+        totalValue = _value;
+    }
+}
