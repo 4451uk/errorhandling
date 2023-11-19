@@ -1,65 +1,41 @@
-# Simple Coin Purchase Smart Contract
+# ConditionalFunctions Solidity Contract
 
 ## Overview
 
-This smart contract, named SimpleCoinPurchase, facilitates the purchase and transfer of custom coins on the blockchain. It demonstrates basic functionality for purchasing coins, checking the coin balance, and transferring coins between addresses.
+This Solidity smart contract, named ConditionalFunctions, demonstrates the usage of conditional statements in Ethereum smart contract development. The contract contains three functions, each utilizing a different type of conditional statement: require, revert, and assert.
 
-## Contract Details
+## Smart Contract Details
 
-- Contract Name: SimpleCoinPurchase
-- Solidity Version: ^0.8.13
-- License: MIT
+### requireFunction(uint number)
 
-## Functions
+This function uses the require statement to enforce a condition. It takes a parameter number and requires that it is greater than 25. If the condition is not met, the function execution is reverted with an error message. Otherwise, the value of number is added to the totalValue state variable.
 
-### 1. purchaseCoins
+### revertFunction(uint num1, uint num2)
 
-This function allows users to purchase custom coins.
+The revertFunction checks if num1 is greater than num2. If this condition is true, the function execution is reverted with an error message stating that "Number 1 cannot be greater than number 2." Otherwise, the sum of num1 and num2 is assigned to the totalValue state variable.
 
-- Input Parameters:
-  - amount: The amount of coins to purchase.
-- Error Handling:
-  - Requires that the purchase amount is greater than zero.
+### assertFunction(uint _value)
 
-### 2. hasCoins
-
-This function checks if the caller has any coins.
-
-- Error Handling:
-  - Asserts that the caller has a positive coin balance.
-
-### 3. transferCoins
-
-This function allows users to transfer coins to another address.
-
-- Input Parameters:
-  - recipient: The address to receive the coins.
-  - amount: The amount of coins to transfer.
-- Error Handling:
-  - Requires that the transfer amount is greater than zero.
-  - Requires that the caller has sufficient coins for the transfer.
-
-## Events
-
-- CoinsTransferred: Emits an event when coins are transferred, including sender, recipient, and amount.
-
-## Statements Used
-
-- *require Statement:*
-  - Used to enforce conditions that must be true for the function to proceed.
-
-- *assert Statement:*
-  - Used for critical checks that should always evaluate to true. In this contract, it ensures the caller has a positive coin balance.
-
-- *revert Statement:*
-  - Used to trigger errormessages. In this contract, it is used to revert the current transaction and undo all changes made to the state
-
-### Authors
-
-Umesh khushappanor
-
-umeshbkhushapppanor@gmail.com
+The assertFunction utilizes the assert statement to ensure that _value is greater than 10. If this condition is not satisfied, the function execution is reverted. Otherwise, the value of _value is assigned to the totalValue state variable.
 
 ## License
 
-This smart contract is released under the MIT License.
+This smart contract is released under the MIT License. See the provided SPDX-License-Identifier comment in the code for more details.
+
+## Prerequisites
+
+- Solidity Compiler 0.8.0 or compatible version
+
+## Notes
+
+- Ensure that the environment used for deployment supports Solidity 0.8.0 or later.
+- Exercise caution when working with assert and revert statements, as they can have significant implications on the state of the blockchain.
+
+## Contributors
+
+umesh khushappanor
+
+umeshbkhushappanor@gmail.com
+Feel free to contribute to the project by forking the repository and submitting pull requests.
+
+
