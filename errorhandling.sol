@@ -1,37 +1,43 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+# ConditionalFunctions Solidity Contract
 
-contract SimpleCoinPurchase {
-    
-    mapping(address => uint256) public balances;
+## Overview
 
-    event CoinsTransferred(address sender, address recipient, uint256 amount);
+This Solidity smart contract, named ConditionalFunctions, demonstrates the usage of conditional statements in Ethereum smart contract development. The contract contains three functions, each utilizing a different type of conditional statement: require, revert, and assert.
 
-    // Function to purchase coins
-    function purchaseCoins(uint256 amount) public {
-        require(amount > 0, "Purchase amount must be greater than zero");
+## Smart Contract Details
 
-        // Simulate coin transfer to the buyer
-        balances[msg.sender] += amount;
+### requireFunction(uint number)
 
-        emit CoinsTransferred(address(0), msg.sender, amount);
-    }
+This function uses the require statement to enforce a condition. It takes a parameter number and requires that it is greater than 25. If the condition is not met, the function execution is reverted with an error message. Otherwise, the value of number is added to the totalValue state variable.
 
-    // Function to check if the buyer has any coins
-    function hasCoins() public view returns (string memory) {
-        assert(balances[msg.sender] > 0);
-        return "You have coins.";
-    }
+### revertFunction(uint num1, uint num2)
 
-    // Function to transfer coins to another address
-    function transferCoins(address recipient, uint256 amount) public {
-        require(amount > 0, "Transfer amount must be greater than zero");
-        require(amount <= balances[msg.sender], "Insufficient coins for transfer");
+The revertFunction checks if num1 is greater than num2. If this condition is true, the function execution is reverted with an error message stating that "Number 1 cannot be greater than number 2." Otherwise, the sum of num1 and num2 is assigned to the totalValue state variable.
 
-        // Simulate coin transfer
-        balances[msg.sender] -= amount;
-        balances[recipient] += amount;
+### assertFunction(uint _value)
 
-        emit CoinsTransferred(msg.sender, recipient, amount);
-    }
-}
+The assertFunction utilizes the assert statement to ensure that _value is greater than 10. If this condition is not satisfied, the function execution is reverted. Otherwise, the value of _value is assigned to the totalValue state variable.
+
+## License
+
+This smart contract is released under the MIT License. See the provided SPDX-License-Identifier comment in the code for more details.
+
+## Prerequisites
+
+- Solidity Compiler 0.8.0 or compatible version
+
+## Usage
+
+1. Deploy the contract into the local environment on remix
+2. Interact with the contract by calling the requireFunction, revertFunction, and assertFunction functions, providing the required parameters.
+
+
+## Contributors
+
+Umesh khushappanor
+
+Umeshbkkhushappanor@gmail.com
+
+Feel free to contribute to the project by forking the repository and submitting pull requests.
+
+Happy coding!
